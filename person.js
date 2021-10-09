@@ -1,15 +1,16 @@
-const Person = function (name) {
+const Person = function (name, pet) {
     this.name = name;
+    this.pet = pet;
 }
 
 Person.prototype.greet = function () {
     console.log(`Hi! My name is ${this.name}`)
 }
 
-const shaggy = new Person('Shaggy Rogers');
-shaggy.greet();
+Person.prototype.feedPet = function (food) {
+    const message = (`${this.name} fed ${this.pet.name} a ${food}`);
+    console.log(message);
+    this.pet.eat(food)
+}
 
-const velma = new Person('Velma Dinkley');
-velma.greet();
-
-console.log(Object.getPrototypeOf(shaggy));
+module.exports = Person;
